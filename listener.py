@@ -39,15 +39,17 @@ while True:
         ''' 
         d = info['i']['rxpk'][0]['data']
 
-        PHYPayload = []
+        info['PHYPayload'] = []
         for c in base64.decodestring(d):
-            PHYPayload.append(ord(c))
+            info['PHYPayload'].append(ord(c))
 
-        MACPayload = PHYPayload[1:]
-        MACPayload = MACPayload[:-4]
-        info['FPort'] = MACPayload[7]
-        info['FRMPayload'] = MACPayload[8:]
-        info['FHDR'] = MACPayload[:7]
+        info['MIC'] = info['PHYPayload'][-4:]
+        info['MHDR'] = info['PHYPayload'][0]
+        info['MACPayload'] = info['PHYPayload'][1:]
+        info['MACPayload'] = info['MACPayload'][:-4]
+        info['FPort'] = info['MACPayload'][7]
+        info['FRMPayload'] = info['MACPayload'][8:]
+        info['FHDR'] = info['MACPayload'][:7]
 
         info['DevAddr'] = "".join("{:02x}".format(info['FHDR'][c]) for c in range(3,-1,-1))
         info['FCnt'] = struct.unpack("<H", "".join(chr(c) for c in info['FHDR'][5:7]))[0] 
