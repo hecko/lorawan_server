@@ -1,0 +1,5 @@
+POC to decrypt data from gateway packet forwarder done in Python
+
+Trying to be as descriptive as possible in decoding packet payload. 
+
+(c) Marcel Hecko, 2016
