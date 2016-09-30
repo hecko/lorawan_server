@@ -3,3 +3,12 @@ POC to decrypt data from gateway packet forwarder done in Python
 Trying to be as descriptive as possible in decoding packet payload. 
 
 (c) Marcel Hecko, 2016
+
+For some hardware this code can be used with:
+
+http://www.daveakerman.com/?p=1719
+
+And the software for gateway:
+
+https://github.com/hecko/single_chan_pkt_fwd
+https://github.com/ttn-zh/ic880a-gateway/tree/spi
