@@ -1,0 +1,19 @@
+#!/usr/bin/python
+
+from pprint import pprint 
+from lora.crypto import loramac_decrypt
+
+AppSKey    = 'FD2C151C49C0716F35D5D338A24524E5'
+DevAddr    = '00000004'
+
+FCnt       = 2 
+FRMPayload = '17144f3a'
+ 
+o = {
+      'hex': [],
+    }
+
+o['int'] = loramac_decrypt(FRMPayload, FCnt, AppSKey, DevAddr)
+for i in o['int']:
+    o['hex'].append(hex(i))
+pprint(o)
